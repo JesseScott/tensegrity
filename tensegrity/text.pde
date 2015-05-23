@@ -2,10 +2,11 @@
 /*
 
   Text Utilities
+  
+  FadingText class taken from 'v.k.' via http://forum.processing.org/one/topic/fade-text-out.html
 
 */
 
-/* taken from http://forum.processing.org/one/topic/fade-text-out.html */
 class FadingText {
   String txt;
   PFont font;
