@@ -1,7 +1,8 @@
 
 /*
 
-  
+  Elder Workshop, Karen Jamieson Dance
+  Elder Health Exhibition, Roundhouse Community Arts Centre, Vancouver
 
 */
 
