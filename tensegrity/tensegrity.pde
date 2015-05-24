@@ -7,10 +7,14 @@
 */
 
 // IMPORTS
+import javax.media.opengl.GL2;
 
 
 // DECLARATIONS
 Icosahedron ico;
+PGraphicsOpenGL pg; 
+PGL pgl;
+GL2 gl;
 
 // GLOBALS
 
@@ -22,11 +26,21 @@ int i;
 
 void setup() 
 {
-  size(1280, 720, P3D);
+  // Screen
+  size(1280, 720, OPENGL);
   background(0);
+  smooth();
+  
+  // OpenGL
+  PGraphicsOpenGL pg = (PGraphicsOpenGL)g;
+  PGL pgl = beginPGL();  
+  gl = ((PJOGL)pgl).gl.getGL2();
+  gl.glHint (gl.GL_LINE_SMOOTH_HINT, gl.GL_NICEST);
+  gl.glEnable (gl.GL_LINE_SMOOTH);
+  gl.glBlendFunc(gl.GL_SRC_ALPHA, gl.GL_ONE );
   
   // Font
-  font = createFont("fonts/SansSerif-48.vlw", 24);
+  font = createFont("fonts/SansSerif-48.vlw", 36);
   textFont(font);
   
   // Load Words
@@ -39,7 +53,7 @@ void setup()
   
   
   // Shape
-  ico = new Icosahedron(75);
+  ico = new Icosahedron(150);
   
 }
 
@@ -52,21 +66,21 @@ void draw()
   
   // Icosahedron
   lights();
-  translate(width/2, height/2);
-
   pushMatrix();
-    translate(-width/3.5, 0);
-    rotateX(frameCount*PI/185);
-    rotateY(frameCount*PI/-200);
-    stroke(170, 0, 0);
+    translate(width/2, height/2);
+    //translate(-width/3.5, 0);
+    rotateX(frameCount * PI/185);
+    rotateY(frameCount * PI/-200);
+    stroke(20, 200, 0);
     noFill();
     ico.create();
-    popMatrix();
+  popMatrix();
   
   // Timer
   if(frameCount % 30 == 0) {
     i = (i+1) % list.length;
     words.add(new FadingText(list[i], font));
+    println(frameRate);
   }
 
   // Show 
