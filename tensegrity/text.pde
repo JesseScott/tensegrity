@@ -21,8 +21,8 @@ class FadingText {
     g = random(125, 255);
     b = random(125, 255);
 
-    x = random(0, 1280);
-    y = random(100, 720);
+    x = random(300, 900);
+    y = random(100, 600);
   }
 
   void display() {

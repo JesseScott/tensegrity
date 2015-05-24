@@ -40,7 +40,7 @@ void setup()
   gl.glBlendFunc(gl.GL_SRC_ALPHA, gl.GL_ONE );
   
   // Font
-  font = createFont("fonts/SansSerif-48.vlw", 36);
+  font = createFont("fonts/SansSerif-48.vlw", 32);
   textFont(font);
   
   // Load Words
@@ -68,7 +68,7 @@ void draw()
   lights();
   pushMatrix();
     translate(width/2, height/2);
-    translate(-width/3.5, 0);
+    translate(-width/3.0, 0);
     rotateX(frameCount * PI/185);
     rotateY(frameCount * PI/-200);
     stroke(200, 20, 0);
@@ -77,7 +77,7 @@ void draw()
   popMatrix();
   
   // Timer
-  if(frameCount % 30 == 0) {
+  if(frameCount % 90 == 0) {
     i = (i+1) % quote.length;
     words.add(new FadingText(quote[i], font));
     println(frameRate);
