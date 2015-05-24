@@ -53,7 +53,7 @@ void setup()
   
   
   // Shape
-  ico = new Icosahedron(150);
+  ico = new Icosahedron(100);
   
 }
 
@@ -68,18 +68,18 @@ void draw()
   lights();
   pushMatrix();
     translate(width/2, height/2);
-    //translate(-width/3.5, 0);
+    translate(-width/3.5, 0);
     rotateX(frameCount * PI/185);
     rotateY(frameCount * PI/-200);
-    stroke(20, 200, 0);
+    stroke(200, 20, 0);
     noFill();
     ico.create();
   popMatrix();
   
   // Timer
   if(frameCount % 30 == 0) {
-    i = (i+1) % list.length;
-    words.add(new FadingText(list[i], font));
+    i = (i+1) % quote.length;
+    words.add(new FadingText(quote[i], font));
     println(frameRate);
   }
 
