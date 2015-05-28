@@ -18,17 +18,24 @@ GL2 gl;
 
 // GLOBALS
 
-PFont font;
-String[] list, quote;
-ArrayList <FadingText> words = new ArrayList<FadingText>();
-int i;
+color red = color(200, 20, 0);
 
+PFont font;
+String[] list;
+FadingText[] quotes;
+FadingImage[] images;
+int word_index = 0;
+int image_index = 0;
+
+PImage[] base, alpha;
+float transparency = 255;
+int img_index = 0;
 
 void setup() 
 {
   // Screen
-  size(1280, 720, OPENGL);
-  background(0);
+  size(1024, 768, OPENGL);
+  background(255);
   smooth();
   
   // OpenGL
@@ -40,17 +47,34 @@ void setup()
   gl.glBlendFunc(gl.GL_SRC_ALPHA, gl.GL_ONE );
   
   // Font
-  font = createFont("fonts/SansSerif-48.vlw", 32);
+  font = createFont("fonts/SansSerif-48.vlw", 96);
   textFont(font);
   
   // Load Words
-  list = loadStrings("words/words-list.txt");
-  if(list.length > 0)println("Loaded 'words-list': there are " + list.length + " lines");
-  quote = loadStrings("words/words-quotes.txt");
-  if(quote.length > 0)println("Loaded 'words-quote': there are " + quote.length + " lines");
-  
+  list = loadStrings("words/words-quotes.txt");
+  quotes = new FadingText[list.length];
+  for(int i = 0; i < list.length; i++) {
+     quotes[i] = new FadingText(list[i], font);
+  }
+
   // Load Images
+  images = new FadingImage[2];
+  images[0] = new FadingImage(loadImage("images/workshop/wksp_1.jpg"), loadImage("images/workshop/wksp_1.png") );
+  images[1] = new FadingImage(loadImage("images/workshop/wksp_2.jpg"), loadImage("images/workshop/wksp_2.png") );
   
+  base = new PImage[1];
+  base[0] = loadImage("images/workshop/wksp_1.jpg");
+  
+  alpha = new PImage[1];
+  alpha[0] = loadImage("images/workshop/wksp_1.png");
+
+  
+  /*
+  PImage[] images = new PImage[12];
+  for ( int i = 0; i< images.length; i++) {
+    images[i] = loadImage( i + ".jpg" );   // make sure images "0.jpg" to "11.jpg" exist
+  }
+*/
   
   // Shape
   ico = new Icosahedron(100);
@@ -61,36 +85,18 @@ void setup()
 
 void draw() 
 {
-  background(0);
-  fill(255);
-  
-  // Icosahedron
-  lights();
-  pushMatrix();
-    translate(width/2, height/2);
-    translate(-width/3.0, 0);
-    rotateX(frameCount * PI/185);
-    rotateY(frameCount * PI/-200);
-    stroke(200, 20, 0);
-    noFill();
-    ico.create();
-  popMatrix();
+  background(255);
   
   // Timer
   if(frameCount % 90 == 0) {
-    i = (i+1) % quote.length;
-    words.add(new FadingText(quote[i], font));
-    println(frameRate);
+    //println("FPS is " + round(frameRate));
   }
 
   // Show 
+  showSlides();
   showWords();
+  //showShapes();
   
 }
 
-void showWords() 
-{
-  for(FadingText f:words) {
-    f.display();
-  }
-}
+

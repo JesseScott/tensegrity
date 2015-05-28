@@ -17,23 +17,34 @@ class FadingText {
     txt = _txt;
     font = _font;
     alpha = 255;
-    r = random(125, 255);
-    g = random(125, 255);
-    b = random(125, 255);
+    r = 255;//random(125, 255);
+    g = 255;//random(125, 255);
+    b = 255;//random(125, 255);
 
-    x = random(300, 900);
-    y = random(100, 600);
+    //x = random(300, 900);
+    //y = random(100, 600);
+
+    x = width/2;
+    y = height/8;
   }
 
   void display() {
-    textFont(font); //textSize(15);
+    textAlign(CENTER, CENTER);
+    textFont(font);
     noStroke();
-    fill(r, g, b, alpha);
+    //fill(r, g, b, alpha);
+    fill(255, alpha);
     text(txt, x, y);
-    alpha -= 1;// fading speed
+    fill(0, alpha);
+    text(txt, x+1, y+1);    
+    alpha -= 0.25;
   }
 
   boolean isDone() {  
     return alpha < 0;
+  }
+  
+  void reset() {
+    alpha = 255; 
   }
 }
