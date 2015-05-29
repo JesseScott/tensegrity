@@ -26,7 +26,7 @@ class FadingImage {
   }
 
   boolean isDone() {  
-    return alpha < 0;
+    return alpha < -200;
   }
   
   void reset() {

@@ -27,9 +27,6 @@ FadingImage[] images;
 int word_index = 0;
 int image_index = 0;
 
-PImage[] base, alpha;
-float transparency = 255;
-int img_index = 0;
 
 void setup() 
 {
@@ -58,16 +55,10 @@ void setup()
   }
 
   // Load Images
-  images = new FadingImage[2];
+  images = new FadingImage[3];
   images[0] = new FadingImage(loadImage("images/workshop/wksp_1.jpg"), loadImage("images/workshop/wksp_1.png") );
   images[1] = new FadingImage(loadImage("images/workshop/wksp_2.jpg"), loadImage("images/workshop/wksp_2.png") );
-  
-  base = new PImage[1];
-  base[0] = loadImage("images/workshop/wksp_1.jpg");
-  
-  alpha = new PImage[1];
-  alpha[0] = loadImage("images/workshop/wksp_1.png");
-
+  images[2] = new FadingImage(loadImage("images/workshop/wksp_3.jpg"), loadImage("images/workshop/wksp_3.png") );
   
   /*
   PImage[] images = new PImage[12];
