@@ -11,40 +11,40 @@ class FadingText {
   String txt;
   PFont font;
   float alpha;
-  float r, g, b, x, y;
+  float x, y, w, h;
 
   FadingText (String _txt, PFont _font) {
     txt = _txt;
     font = _font;
-    alpha = 255;
-    r = 255;//random(125, 255);
-    g = 255;//random(125, 255);
-    b = 255;//random(125, 255);
-
-    //x = random(300, 900);
-    //y = random(100, 600);
-
-    x = width/2;
-    y = height/8;
+    alpha = 0;
+    
+    textAlign(CENTER, TOP);
+    rectMode(CORNER);
+    textFont(font);
+    textSize(54);
+    noStroke();
+    
+    x = 102; //width/20;
+    y = 600; //(height/10) * 8;
+    w = 820; //(width/20) * 19;
+    h = 150; //(height/10) * 8;
   }
 
   void display() {
-    textAlign(CENTER, CENTER);
-    textFont(font);
-    noStroke();
-    //fill(r, g, b, alpha);
-    fill(255, alpha);
-    text(txt, x, y);
     fill(0, alpha);
-    text(txt, x+1, y+1);    
-    alpha -= 0.25;
+    text(txt, x, y, w, h);
+    fill(255, alpha);
+    text(txt, x-2, y-2, w, h);    
+    alpha += 2.5;
   }
 
   boolean isDone() {  
-    return alpha < 0;
+    //return alpha < 0;
+    return alpha > 255;
   }
   
   void reset() {
-    alpha = 255; 
+    //alpha = 255;
+    alpha = 0;
   }
 }

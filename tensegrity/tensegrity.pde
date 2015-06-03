@@ -6,45 +6,53 @@
 
 */
 
-// IMPORTS
-import javax.media.opengl.GL2;
+/*
+TODO
 
+  fade text in as image fades out (test in image ?)
+  fade image in and out (no snap)
+  fade to silhouette
+  more tree images
+  
+
+
+*/
+
+// IMPORTS
 
 // DECLARATIONS
-Icosahedron ico;
-PGraphicsOpenGL pg; 
-PGL pgl;
-GL2 gl;
 
 // GLOBALS
 
 color red = color(200, 20, 0);
 
+PGraphics one, two, three;
 PFont font;
 String[] list;
 FadingText[] quotes;
 FadingImage[] images;
 int word_index = 0;
 int image_index = 0;
+int fade_index = 3;
+int FADE_TIME = 2500;
+
 
 
 void setup() 
 {
   // Screen
-  size(1024, 768, OPENGL);
+  size(1024, 768);
   background(255);
   smooth();
+  frameRate(30);
   
-  // OpenGL
-  PGraphicsOpenGL pg = (PGraphicsOpenGL)g;
-  PGL pgl = beginPGL();  
-  gl = ((PJOGL)pgl).gl.getGL2();
-  gl.glHint (gl.GL_LINE_SMOOTH_HINT, gl.GL_NICEST);
-  gl.glEnable (gl.GL_LINE_SMOOTH);
-  gl.glBlendFunc(gl.GL_SRC_ALPHA, gl.GL_ONE );
+  // PGraphics
+  one = createGraphics(width, height);
+  two = createGraphics(width, height);
+  three = createGraphics(width, height);
   
   // Font
-  font = createFont("fonts/SansSerif-48.vlw", 96);
+  font = loadFont("fonts/AdobeHeitiStd-Regular-96.vlw");
   textFont(font);
   
   // Load Words
@@ -56,19 +64,16 @@ void setup()
 
   // Load Images
   images = new FadingImage[3];
-  images[0] = new FadingImage(loadImage("images/workshop/wksp_1.jpg"), loadImage("images/workshop/wksp_1.png") );
-  images[1] = new FadingImage(loadImage("images/workshop/wksp_2.jpg"), loadImage("images/workshop/wksp_2.png") );
-  images[2] = new FadingImage(loadImage("images/workshop/wksp_3.jpg"), loadImage("images/workshop/wksp_3.png") );
-  
-  /*
-  PImage[] images = new PImage[12];
-  for ( int i = 0; i< images.length; i++) {
-    images[i] = loadImage( i + ".jpg" );   // make sure images "0.jpg" to "11.jpg" exist
-  }
-*/
-  
-  // Shape
-  ico = new Icosahedron(100);
+  //images[0] = new FadingImage(loadImage("images/workshop/wksp_1.jpg"), loadImage("images/workshop/wksp_1_silhouette.png"), list[0], font );
+  //images[1] = new FadingImage(loadImage("images/tensegrity/tens_1.jpg"), loadImage("images/tensegrity/tens_1.png") );
+  //images[2] = new FadingImage(loadImage("images/trees/tree_1.jpg"), loadImage("images/trees/tree_1_inv.jpg") );
+
+  images[0] = new FadingImage(loadImage("images/workshop/wksp_5.jpg"), loadImage("images/trees/trees_1.png"), list[18], font );
+  //images[4] = new FadingImage(loadImage("images/tensegrity/tens_2.jpg"), loadImage("images/tensegrity/tens_2.png") );
+  //images[5] = new FadingImage(loadImage("images/trees/tree_2.jpg"), loadImage("images/trees/tree_2_inv.jpg") );
+
+  images[2] = new FadingImage(loadImage("images/workshop/wksp_3.jpg"), loadImage("images/workshop/wksp_3.png"), list[2], font );
+  //images[7] = new FadingImage(loadImage("images/tensegrity/tens_3.jpg"), loadImage("images/tensegrity/tens_3.png") );
   
 }
 
@@ -80,14 +85,17 @@ void draw()
   
   // Timer
   if(frameCount % 90 == 0) {
-    //println("FPS is " + round(frameRate));
+    println("FPS is " + round(frameRate));
   }
 
+  
   // Show 
   showSlides();
-  showWords();
-  //showShapes();
+  //showWords();
   
+  // Save
+  //saveFrame("frames/#####.png"); 
 }
+
 
 
