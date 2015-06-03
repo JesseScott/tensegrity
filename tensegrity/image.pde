@@ -28,8 +28,8 @@ class FadingImage {
     noStroke();
     
     x = 0; 
-    y = 600; 
-    w = 820; 
+    y = 618; 
+    w = width; 
     h = 150; 
   }
 
@@ -50,12 +50,10 @@ class FadingImage {
   
   void showText() {
     pushStyle();
-      fill(255);
-      rect(0, 600, width, 150);   
-      fill(0, 255 - alpha);
-      text(txt, x, y, width, h);
-      //fill(255, 255 - alpha);
-      //text(txt, x-2, y-2, w, h);  
+      fill(255, 255 - (alpha * 1.5));
+      rect(x, y, w, h);   
+      fill(0, 255 - (alpha * 1.5));
+      text(txt, x, y, w, h); 
     popStyle();
   }
 

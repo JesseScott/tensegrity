@@ -47,17 +47,15 @@ void setup()
   }
 
   // Load Images
-  images = new FadingImage[3];
-  //images[0] = new FadingImage(loadImage("images/workshop/wksp_1.jpg"), loadImage("images/workshop/wksp_1_silhouette.png"), list[0], font );
-  //images[1] = new FadingImage(loadImage("images/tensegrity/tens_1.jpg"), loadImage("images/tensegrity/tens_1.png") );
-  //images[2] = new FadingImage(loadImage("images/trees/tree_1.jpg"), loadImage("images/trees/tree_1_inv.jpg") );
-
-  images[0] = new FadingImage(loadImage("images/workshop/wksp_5.jpg"), loadImage("images/trees/trees_1.png"), list[0], font );
-  //images[4] = new FadingImage(loadImage("images/tensegrity/tens_2.jpg"), loadImage("images/tensegrity/tens_2.png") );
-  //images[5] = new FadingImage(loadImage("images/trees/tree_2.jpg"), loadImage("images/trees/tree_2_inv.jpg") );
-
-  images[2] = new FadingImage(loadImage("images/workshop/wksp_3.jpg"), loadImage("images/workshop/wksp_3.png"), list[2], font );
-  //images[7] = new FadingImage(loadImage("images/tensegrity/tens_3.jpg"), loadImage("images/tensegrity/tens_3.png") );
+  images = new FadingImage[8];
+  images[0] = new FadingImage(loadImage("images/workshop/wksp_1.jpg"), loadImage("images/workshop/wksp_1_silhouette.png"), list[0], font );
+  images[1] = new FadingImage(loadImage("images/tensegrity/tens_1.jpg"), loadImage("images/tensegrity/tens_1.png"), list[1], font );
+  images[2] = new FadingImage(loadImage("images/trees/tree_1.jpg"), loadImage("images/trees/tree_1_inv.jpg"), list[2], font );
+  images[3] = new FadingImage(loadImage("images/workshop/wksp_5.jpg"), loadImage("images/trees/trees_1.png"), list[3], font );
+  images[4] = new FadingImage(loadImage("images/tensegrity/tens_2.jpg"), loadImage("images/tensegrity/tens_2.png"), list[4], font );
+  images[5] = new FadingImage(loadImage("images/trees/tree_2.jpg"), loadImage("images/trees/tree_2_inv.jpg"), list[5], font );
+  images[6] = new FadingImage(loadImage("images/workshop/wksp_3.jpg"), loadImage("images/workshop/wksp_3.png"), list[6], font );
+  images[7] = new FadingImage(loadImage("images/tensegrity/tens_3.jpg"), loadImage("images/tensegrity/tens_3.png"), list[7], font );
   
 }
 
