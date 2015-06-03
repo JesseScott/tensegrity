@@ -14,28 +14,17 @@ TODO
   fade to silhouette
   more tree images
   
-
-
 */
 
-// IMPORTS
-
-// DECLARATIONS
 
 // GLOBALS
 
-color red = color(200, 20, 0);
-
-PGraphics one, two, three;
 PFont font;
 String[] list;
 FadingText[] quotes;
 FadingImage[] images;
 int word_index = 0;
 int image_index = 0;
-int fade_index = 3;
-int FADE_TIME = 2500;
-
 
 
 void setup() 
@@ -45,12 +34,7 @@ void setup()
   background(255);
   smooth();
   frameRate(30);
-  
-  // PGraphics
-  one = createGraphics(width, height);
-  two = createGraphics(width, height);
-  three = createGraphics(width, height);
-  
+
   // Font
   font = loadFont("fonts/AdobeHeitiStd-Regular-96.vlw");
   textFont(font);
@@ -68,7 +52,7 @@ void setup()
   //images[1] = new FadingImage(loadImage("images/tensegrity/tens_1.jpg"), loadImage("images/tensegrity/tens_1.png") );
   //images[2] = new FadingImage(loadImage("images/trees/tree_1.jpg"), loadImage("images/trees/tree_1_inv.jpg") );
 
-  images[0] = new FadingImage(loadImage("images/workshop/wksp_5.jpg"), loadImage("images/trees/trees_1.png"), list[18], font );
+  images[0] = new FadingImage(loadImage("images/workshop/wksp_5.jpg"), loadImage("images/trees/trees_1.png"), list[0], font );
   //images[4] = new FadingImage(loadImage("images/tensegrity/tens_2.jpg"), loadImage("images/tensegrity/tens_2.png") );
   //images[5] = new FadingImage(loadImage("images/trees/tree_2.jpg"), loadImage("images/trees/tree_2_inv.jpg") );
 

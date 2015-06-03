@@ -21,40 +21,42 @@ class FadingImage {
     alpha = 128;
     descending = false;
     
-    textAlign(CENTER, TOP);
+    textAlign(CENTER, CENTER);
     rectMode(CORNER);
     textFont(font);
-    textSize(54);
+    textSize(42);
     noStroke();
     
-    x = 102; 
+    x = 0; 
     y = 600; 
     w = 820; 
     h = 150; 
   }
 
   void display() {
-    //if (alpha > 0) { alpha -= 0.25; }
-    
     tint(255, alpha);
     image(fore, 0, 0);
-    tint(255, 255 -alpha);
-    image(back, 0, 0, width, height);  
-    
-    fill(0, 255 - alpha);
-    text(txt, x, y, w, h);
-    fill(255, 255 - alpha);
-    text(txt, x-2, y-2, w, h);    
-    
     if(descending) {
+      tint(255, 255 -alpha);
+      image(back, 0, 0, width, height);   
+      showText();  
       alpha -= 0.5;
     }
     else {
-      alpha += 1.5;
+      alpha += 5;
       if(alpha > 255) descending = true;
-    }
-    
-    println("Alpha is " + alpha);
+    }    
+  }
+  
+  void showText() {
+    pushStyle();
+      fill(255);
+      rect(0, 600, width, 150);   
+      fill(0, 255 - alpha);
+      text(txt, x, y, width, h);
+      //fill(255, 255 - alpha);
+      //text(txt, x-2, y-2, w, h);  
+    popStyle();
   }
 
   boolean isDone() {  
