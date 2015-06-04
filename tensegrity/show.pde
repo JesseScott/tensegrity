@@ -5,14 +5,6 @@
   
 */
 
-void showWords() 
-{
-  quotes[word_index].display();
-  if(quotes[word_index].isDone()) {
-    word_index = (word_index+1) % list.length;
-    quotes[word_index].reset();
-  }
-}
 
 void showSlides() 
 {

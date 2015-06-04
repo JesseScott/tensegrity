@@ -13,11 +13,11 @@ class FadingImage {
   float x, y, w, h;
   String txt;
 
-  FadingImage (PImage _fore, PImage _back, String _txt, PFont _font) {
+  FadingImage (PImage _fore, PImage _back, String _txt) {
     fore = _fore;
     back = _back;
     txt = _txt;
-    font = _font;
+    font = loadFont("fonts/AdobeHeitiStd-Regular-96.vlw");
     alpha = 128;
     descending = false;
     
@@ -58,7 +58,7 @@ class FadingImage {
   }
 
   boolean isDone() {  
-    return alpha < -255;
+    return alpha < -128;
   }
   
   void reset() {

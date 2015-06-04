@@ -26,7 +26,6 @@ FadingImage[] images;
 int word_index = 0;
 int image_index = 0;
 
-
 void setup() 
 {
   // Screen
@@ -47,15 +46,38 @@ void setup()
   }
 
   // Load Images
-  images = new FadingImage[8];
-  images[0] = new FadingImage(loadImage("images/workshop/wksp_1.jpg"), loadImage("images/workshop/wksp_1_silhouette.png"), list[0], font );
-  images[1] = new FadingImage(loadImage("images/tensegrity/tens_1.jpg"), loadImage("images/tensegrity/tens_1.png"), list[1], font );
-  images[2] = new FadingImage(loadImage("images/trees/tree_1.jpg"), loadImage("images/trees/tree_1_inv.jpg"), list[2], font );
-  images[3] = new FadingImage(loadImage("images/workshop/wksp_5.jpg"), loadImage("images/trees/trees_1.png"), list[3], font );
-  images[4] = new FadingImage(loadImage("images/tensegrity/tens_2.jpg"), loadImage("images/tensegrity/tens_2.png"), list[4], font );
-  images[5] = new FadingImage(loadImage("images/trees/tree_2.jpg"), loadImage("images/trees/tree_2_inv.jpg"), list[5], font );
-  images[6] = new FadingImage(loadImage("images/workshop/wksp_3.jpg"), loadImage("images/workshop/wksp_3.png"), list[6], font );
-  images[7] = new FadingImage(loadImage("images/tensegrity/tens_3.jpg"), loadImage("images/tensegrity/tens_3.png"), list[7], font );
+  
+  int CAP = 5;
+  
+  PImage[] trees = new PImage[CAP];
+  for(int i = 0; i< trees.length; i++) {
+    trees[i] = loadImage("images/trees/tree_" + i + ".png" );
+  }
+  
+  PImage[] elders = new PImage[CAP];
+  PImage[] elders_bw = new PImage[CAP];
+  for(int i = 0; i< elders.length; i++) {
+    elders[i] = loadImage("images/elders/elders_" + i + ".jpg" );
+    elders_bw[i] = loadImage("images/elders/elders_" + i + "_bw.jpg" );
+  }
+
+  PImage[] wksp = new PImage[CAP];
+  PImage[] wksp_bw = new PImage[CAP];
+  for(int i = 0; i< wksp.length; i++) {
+    wksp[i] = loadImage("images/wksp/wksp_" + i + ".jpg" );
+    wksp_bw[i] = loadImage("images/wksp/wksp_" + i + "_bw.png" );
+  }
+  
+  images = new FadingImage[10];
+  for(int i = 0; i< images.length; i++) {
+    if(i < CAP) {
+      images[i] = new FadingImage(elders[i], elders_bw[i], list[i]);
+    }
+    else {
+      int j = i - CAP;
+      images[i] = new FadingImage(wksp[j], wksp_bw[j], list[i]);
+    }
+  }
   
 }
 
@@ -63,17 +85,11 @@ void setup()
 
 void draw() 
 {
+  // Clear
   background(255);
-  
-  // Timer
-  if(frameCount % 90 == 0) {
-    println("FPS is " + round(frameRate));
-  }
-
   
   // Show 
   showSlides();
-  //showWords();
   
   // Save
   //saveFrame("frames/#####.png"); 
