@@ -62,6 +62,6 @@ class FadingImage {
   }
   
   void reset() {
-    alpha = 128; 
+    alpha = -128; 
   }
 }

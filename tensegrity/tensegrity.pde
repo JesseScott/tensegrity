@@ -28,11 +28,11 @@ void setup()
   font = loadFont("fonts/AdobeHeitiStd-Regular-96.vlw");
   textFont(font);
 
-  // Load Words
+  // Words
   blurb = loadStrings("words/words-trees.txt");
   list = loadStrings("words/words-quotes.txt");
 
-  // Load Images
+  // Images
 
   int CAP = 5;
 
@@ -42,7 +42,6 @@ void setup()
     trees[i] = loadImage("images/trees/tree_" + i + ".png" );
     ppl[i] = loadImage("images/trees/ppl_" + i + ".jpg" );
   }
-
 
   PImage[] elders = new PImage[CAP];
   PImage[] elders_bw = new PImage[CAP];
@@ -117,7 +116,11 @@ void draw()
   background(255);
 
   // Show 
-  showSlides();
+  images[image_index].display();
+  if(images[image_index].isDone()) {
+    image_index = (image_index+1) % images.length;
+    images[image_index].reset();
+  }
 
   // Save
   //saveFrame("frames/#####.png");
