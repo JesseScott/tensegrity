@@ -12,7 +12,6 @@
 PFont font;
 String[] list;
 String blurb[];
-FadingText[] quotes;
 FadingImage[] images;
 int word_index = 0;
 int image_index = 0;
@@ -32,10 +31,6 @@ void setup()
   // Load Words
   blurb = loadStrings("words/words-trees.txt");
   list = loadStrings("words/words-quotes.txt");
-  quotes = new FadingText[list.length];
-  for (int i = 0; i < list.length; i++) {
-    quotes[i] = new FadingText(list[i], font);
-  }
 
   // Load Images
 
