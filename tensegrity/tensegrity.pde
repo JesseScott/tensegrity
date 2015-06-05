@@ -92,7 +92,7 @@ void setup()
         break;
       case 9: 
         offset++;
-        images[i] = new FadingImage(ppl[1], trees[1], blurb[0]); 
+        images[i] = new FadingImage(ppl[1], trees[1], blurb[1]); 
         break;
       case 10: 
         images[i] = new FadingImage(elders[4], elders_bw[4], list[i-offset]);
@@ -102,7 +102,7 @@ void setup()
         break;
       case 12: 
         offset++;
-        images[i] = new FadingImage(ppl[2], trees[2], blurb[0]); 
+        images[i] = new FadingImage(ppl[2], trees[2], blurb[2]); 
         break;
     }
      

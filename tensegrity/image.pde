@@ -18,7 +18,7 @@ class FadingImage {
     back = _back;
     txt = _txt;
     font = loadFont("fonts/AdobeHeitiStd-Regular-96.vlw");
-    alpha = 128;
+    alpha = - 128;
     descending = false;
     
     textAlign(CENTER, CENTER);
@@ -29,7 +29,7 @@ class FadingImage {
     
     x = 0; 
     y = 618; 
-    w = width; 
+    w = 1000; 
     h = 150; 
   }
 
@@ -40,11 +40,11 @@ class FadingImage {
       tint(255, 255 -alpha);
       image(back, 0, 0, width, height);   
       showText();  
-      alpha -= 0.5;
+      alpha -= 1.0;
     }
     else {
-      alpha += 5;
-      if(alpha > 255) descending = true;
+      alpha += 2.5;
+      if(alpha > 300) descending = true;
     }    
   }
   
