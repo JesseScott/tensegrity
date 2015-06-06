@@ -39,7 +39,7 @@ void setup()
   PImage[] trees = new PImage[3];
   PImage[] ppl = new PImage[3];
   for (int i = 0; i< trees.length; i++) {
-    trees[i] = loadImage("images/trees/tree_" + i + ".png" );
+    trees[i] = loadImage("images/trees/tree_" + i + ".jpg" );
     ppl[i] = loadImage("images/trees/ppl_" + i + ".jpg" );
   }
 

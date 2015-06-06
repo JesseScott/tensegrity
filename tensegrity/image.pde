@@ -71,8 +71,12 @@ class FadingImage {
   
   void showText() {
     pushStyle();
-      fill(255, 255 - (alpha * 1.5));
-      rect(x, y, w, h);   
+      if(alpha > 0) 
+        fill(255, 255 - (alpha * 1.5));
+      else  
+        fill(255, 255 + (alpha * 3.5));
+      rect(x, y, w, h);  
+
       fill(0, 255 - (alpha * 1.5));
       text(txt, x, y, 1000, h); 
     popStyle();
