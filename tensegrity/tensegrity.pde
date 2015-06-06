@@ -19,8 +19,8 @@ int image_index = 0;
 void setup() 
 {
   // Screen
-  size(1024, 768);
-  background(255);
+  size(1024, 768, P2D);
+  background(0);
   smooth();
   frameRate(30);
 
@@ -113,7 +113,7 @@ void setup()
 void draw() 
 {
   // Clear
-  background(255);
+  background(0);
 
   // Show 
   images[image_index].display();

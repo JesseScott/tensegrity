@@ -17,9 +17,10 @@ class FadingImage {
     fore = _fore;
     back = _back;
     txt = _txt;
+    
     font = loadFont("fonts/AdobeHeitiStd-Regular-96.vlw");
-    alpha = - 128;
     descending = false;
+    alpha = -64;
     
     textAlign(CENTER, CENTER);
     rectMode(CORNER);
@@ -34,18 +35,38 @@ class FadingImage {
   }
 
   void display() {
-    tint(255, alpha);
-    image(fore, 0, 0);
+    pushStyle();
+      tint(255, constrain(alpha, 0, 255));
+      image(fore, 0, 0, width, height);
+    popStyle();
     if(descending) {
-      tint(255, 255 -alpha);
-      image(back, 0, 0, width, height);   
+      if(alpha > 0) {
+        tint(255, 255 - alpha);
+        image(back, 0, 0, width, height);
+      }
+      else { 
+         tint(255, 255 + (alpha * 4));
+         image(back, 0, 0, width, height);
+      }
+         
       showText();  
       alpha -= 1.0;
     }
     else {
-      alpha += 2.5;
-      if(alpha > 300) descending = true;
+      alpha += 2.0;
+      if(alpha > 319) descending = true;
     }    
+  }
+  
+  void showAlpha() {
+    pushStyle();
+      stroke(255, 0, 0);
+      strokeWeight(4);
+      line(0, height/2, 200, height/2);
+      fill(255, 0, 0);
+      ellipse(100, (height/2) - alpha, 40, 40); 
+      text(round(alpha), 100, 700);
+    popStyle();
   }
   
   void showText() {
@@ -57,12 +78,15 @@ class FadingImage {
     popStyle();
   }
 
-  boolean isDone() {  
-    return alpha < -128;
+  boolean isDone() { 
+    if(descending)    
+      return alpha < -64;
+    else 
+      return false;
   }
   
   void reset() {
-    alpha = -128;
+    alpha = -64;
     descending = false;
   }
 }
