@@ -29,7 +29,7 @@ class FadingImage {
     
     x = 0; 
     y = 618; 
-    w = 1000; 
+    w = width; 
     h = 150; 
   }
 
@@ -53,7 +53,7 @@ class FadingImage {
       fill(255, 255 - (alpha * 1.5));
       rect(x, y, w, h);   
       fill(0, 255 - (alpha * 1.5));
-      text(txt, x, y, w, h); 
+      text(txt, x, y, 1000, h); 
     popStyle();
   }
 
@@ -62,6 +62,7 @@ class FadingImage {
   }
   
   void reset() {
-    alpha = -128; 
+    alpha = -128;
+    descending = false;
   }
 }
