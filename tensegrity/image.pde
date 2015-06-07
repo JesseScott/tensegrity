@@ -48,14 +48,14 @@ class FadingImage {
          tint(255, 255 + (alpha * 4));
          image(back, 0, 0, width, height);
       }
-         
+      alpha -= 0.75;   
       showText();  
-      alpha -= 1.0;
     }
     else {
       alpha += 2.0;
       if(alpha > 319) descending = true;
     }    
+    //showAlpha();
   }
   
   void showAlpha() {
@@ -72,12 +72,12 @@ class FadingImage {
   void showText() {
     pushStyle();
       if(alpha > 0) 
-        fill(255, 255 - (alpha * 1.5));
+        fill(255, (255 - alpha) * 1.5);
       else  
-        fill(255, 255 + (alpha * 3.5));
+        fill(255, 255 + (alpha * 4.0));
       rect(x, y, w, h);  
 
-      fill(0, 255 - (alpha * 1.5));
+      fill(0, (255 - alpha) * 1.5);
       text(txt, x, y, 1000, h); 
     popStyle();
   }
