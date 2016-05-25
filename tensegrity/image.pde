@@ -5,7 +5,9 @@
   
 */
 
-class FadingImage {
+class FadingImage 
+{
+  
   PImage fore, back;
   PFont font;
   Boolean descending;
@@ -13,7 +15,8 @@ class FadingImage {
   float x, y, w, h;
   String txt;
 
-  FadingImage (PImage _fore, PImage _back, String _txt) {
+  FadingImage (PImage _fore, PImage _back, String _txt) 
+  {
     fore = _fore;
     back = _back;
     txt = _txt;
@@ -34,7 +37,8 @@ class FadingImage {
     h = 150; 
   }
 
-  void display() {
+  void display() 
+  {
     pushStyle();
       tint(255, constrain(alpha, 0, 255));
       image(fore, 0, 0, width, height);
@@ -58,7 +62,8 @@ class FadingImage {
     //showAlpha();
   }
   
-  void showAlpha() {
+  void showAlpha() 
+  {
     pushStyle();
       stroke(255, 0, 0);
       strokeWeight(4);
@@ -69,7 +74,8 @@ class FadingImage {
     popStyle();
   }
   
-  void showText() {
+  void showText() 
+  {
     pushStyle();
       if(alpha > 0) 
         fill(255, (255 - alpha) * 1.5);
@@ -82,14 +88,16 @@ class FadingImage {
     popStyle();
   }
 
-  boolean isDone() { 
+  boolean isDone() 
+  { 
     if(descending)    
       return alpha < -64;
     else 
       return false;
   }
   
-  void reset() {
+  void reset() 
+  {
     alpha = -64;
     descending = false;
   }
